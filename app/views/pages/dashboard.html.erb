@@ -1,0 +1,33 @@
+<div class="container">
+  <h1 class="mt-4"> Hello <%= current_user.first_name %>!</h1>
+    <div>
+      <h2>Your custom programs 💪🏼</h2>
+    </div>
+    <div class="mb-3">
+      <h2>Your bib 👇🏽</h2>
+      <% if current_user.bibs.count > 0 %>
+        <div class="row">
+          <% current_user.bibs.reverse.each do |bib| %>
+            <div class="col-sm-4 col-md-4 mb-3">
+              <%= link_to program, class:"card-offer" do %>
+                <div class="card-offer">
+                    <% if bib.race.photo.attached? %>
+                      <%= cl_image_tag bib.race.photo.key %>
+                    <% else %>
+                      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+                    <% end %>
+                  <div class="card-offer-infos">
+                    <h4><%= bib.race.name %></h4>
+                    <p><%= bib.race.description %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+      <% else %>
+        <p>Don't have your first bib yet? Buy one!</p>
+        <%= link_to "Buy a bib", new_bib_path, class:"btn btn-primary" %>
+      <% end %>
+        </div>
+    </div>
+</div>

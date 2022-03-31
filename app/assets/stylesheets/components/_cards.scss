@@ -1,0 +1,21 @@
+.card-offer {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.103);
+  border-radius: 5px;
+  text-decoration: none;
+  color: $primary;
+}
+
+.card-offer > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.card-offer .card-offer-infos {
+  padding: 14px;
+  position: relative;
+}

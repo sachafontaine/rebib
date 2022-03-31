@@ -10,3 +10,25 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+}
+
+.wrapper {
+  flex : 1 0 auto;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Poppins', sans-serif;
+  color: $primary;
+  font-weight: bold;
+}
+
+a, p, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+}

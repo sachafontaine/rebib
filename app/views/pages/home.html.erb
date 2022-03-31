@@ -1,2 +1,24 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= render 'shared/banner' %>
+<div class="container mt-4 mb-4">
+  <h2 class="text-center mb-4">Next races</h2>
+  <div class="row">
+    <% @races.first(6).each do |race| %>
+      <div class="col-sm-4 col-md-4 mb-3">
+        <%= link_to race, class:"card-offer" do %>
+          <div class="card-offer">
+              <% if race.photo.attached? %>
+                <%= cl_image_tag race.photo.key %>
+              <% else %>
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+              <% end %>
+            <div class="card-offer-infos">
+              <h4><%= race.name %></h4>
+              <p><%= race.description %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= render 'shared/banner_custom' %>
