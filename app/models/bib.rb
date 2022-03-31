@@ -1,0 +1,2 @@
+class Bib < ApplicationRecord
+end
