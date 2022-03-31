@@ -1,1 +1,1 @@
-I am trying to create a solution to resell a bib at sporting events.
+I try to find a solution to a problem at sporting events.
