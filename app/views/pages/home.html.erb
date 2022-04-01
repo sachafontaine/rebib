@@ -7,7 +7,9 @@
         <%= link_to race, class:"card-offer" do %>
           <div class="card-offer">
             <div class="card-offer-infos">
-              <h4><%= race.name %></h4>
+              <p><%= race.name %></p>
+              <p>📅 <%= race.date %></p>
+              <p>📍 <%= race.address %></p>
             </div>
           </div>
         <% end %>
