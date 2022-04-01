@@ -1,20 +1,23 @@
 <div class="container">
   <div class="program-list mb-4">
     <h2 class="text-center mt-4 mb-4">Races to come</h2>
+      <%= form_tag races_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control mb-3",
+          placeholder: "Find a race" %>
+        <%= submit_tag "Search", class: "btn btn-primary mb-3" %>
+      <% end %>
       <% if @races.count > 0 %>
         <div class="row">
-          <% @races.first(6).each do |race| %>
+          <% @races.each do |race| %>
             <div class="col-sm-4 col-md-4 mb-3">
               <%= link_to race, class:"card-offer" do %>
                 <div class="card-offer">
-                    <% if race.photo.attached? %>
-                      <%= cl_image_tag race.photo.key %>
-                    <% else %>
-                      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-                    <% end %>
                   <div class="card-offer-infos">
-                    <h4><%= race.name %></h4>
-                    <p><%= race.description %></p>
+                    <p><%= race.name %></p>
+                    <p>📅 <%= race.date %></p>
+                    <p>📍 <%= race.address %></p>
                   </div>
                 </div>
               <% end %>

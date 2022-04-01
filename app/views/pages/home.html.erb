@@ -6,14 +6,8 @@
       <div class="col-sm-4 col-md-4 mb-3">
         <%= link_to race, class:"card-offer" do %>
           <div class="card-offer">
-              <% if race.photo.attached? %>
-                <%= cl_image_tag race.photo.key %>
-              <% else %>
-                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-              <% end %>
             <div class="card-offer-infos">
               <h4><%= race.name %></h4>
-              <p><%= race.description %></p>
             </div>
           </div>
         <% end %>

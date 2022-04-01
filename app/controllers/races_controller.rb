@@ -7,7 +7,11 @@ class RacesController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
   def index
-    @races = Race.all
+    if params[:query].present?
+      @races = Race.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @races = Race.all
+    end
   end
 
   def new
@@ -52,6 +56,6 @@ class RacesController < ApplicationController
   end
 
   def race_params
-    params.require(:race).permit(:name, :description)
+    params.require(:race).permit(:name, :address, :date)
   end
 end
