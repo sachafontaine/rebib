@@ -5,7 +5,7 @@
       <% unless @race.date.match?(/Non connue/)  %>
         <p>📅 <%= @race.date.gsub(/(au)/, ' au') %></p>
       <% else %>
-        <p>📅 The date is not known to our services. <%= link_to "Suggest a date", edit_race_path %></p>
+        <p>📅 La date de cette course n'est pas connue de nos services. <%= link_to "Suggérer une date", edit_race_path %></p>
       <% end %>
       <p>📍 <%= @race.address.gsub(/([()])/,' \1 ') %></p>
       <hr>
@@ -15,9 +15,9 @@
             <%= link_to bib, class:"card-offer" do %>
               <div class="card-offer">
                 <div class="card-offer-infos">
-                  <h4>Bib of <%= bib.user.first_name %></h4>
+                  <h4>Dossard de <%= bib.user.first_name %></h4>
                   <p><%= bib.race.name %></p>
-                  <p>Created at <%= bib.created_at.to_date %></p>
+                  <p><%= bib.created_at.strftime("Déposé le %m/%d/%Y") %></p>
                 </div>
               </div>
             <% end %>

@@ -1,13 +1,7 @@
 <div class="container">
   <div class="program-list mb-4">
-    <h2 class="text-center mt-4 mb-4">Races to come</h2>
-      <%= form_tag races_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control mb-3",
-          placeholder: "Find a race" %>
-        <%= submit_tag "Search", class: "btn btn-primary mb-3" %>
-      <% end %>
+    <h2 class="text-center mt-4 mb-4">Courses à venir</h2>
+      <%= render 'shared/searchbar' %>
       <% if @races.count > 0 %>
         <div class="row">
           <% @races.each do |race| %>
@@ -27,7 +21,7 @@
           <% end %>
         </div>
       <% else %>
-        <%= link_to "Add a race", new_race_path, class:"btn btn-primary" %>
+        <%= link_to "Ajouter une course", new_race_path, class:"btn btn-primary" %>
       <% end %>
   </div>
 </div>

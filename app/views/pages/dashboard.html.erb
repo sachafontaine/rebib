@@ -1,7 +1,7 @@
 <div class="container">
-  <h1 class="mt-4"> Hello <%= current_user.first_name %>!</h1>
+  <h1 class="mt-4"> Bonjour <%= current_user.first_name %> !</h1>
     <div class="mb-3">
-      <h2>Your bibs</h2>
+      <h2>Vos dossards</h2>
       <% if current_user.bibs.count > 0 %>
         <div class="row">
           <% current_user.bibs.reverse.each do |bib| %>
@@ -12,7 +12,7 @@
                   <div class="card-offer-infos">
                     <h4><%= bib.race.name %></h4>
                     <% unless bib.race.date.match?(/Non connue/)  %>
-                      <p>📅 <%= @bib.race.date.gsub(/(au)/, ' au') %></p>
+                      <p>📅 <%= bib.race.date.gsub(/(au)/, ' au') %></p>
                     <% end %>
                     <p>📍 <%= bib.race.address.gsub(/([()])/,' \1 ') %></p>
                   </div>
