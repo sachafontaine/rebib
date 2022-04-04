@@ -12,13 +12,15 @@ class BibsController < ApplicationController
 
   def new
     @bib = Bib.new
+    @races = Race.all
     authorize @bib
   end
 
   def create
     @bib = Bib.new(bib_params)
-    @bib.user = current_user
     authorize @bib
+    @bib.user = current_user
+    @bib.race = Race.find(params[:race_id])
     if @bib.save
       redirect_to bib_path(@bib), notice: 'Bib was successfully created.'
     else

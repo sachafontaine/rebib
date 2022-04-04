@@ -15,9 +15,11 @@
               <%= link_to race, class:"card-offer" do %>
                 <div class="card-offer">
                   <div class="card-offer-infos">
-                    <p><%= race.name %></p>
-                    <p>📅 <%= race.date %></p>
-                    <p>📍 <%= race.address %></p>
+                    <h4><%= race.name %></h4>
+                    <% unless race.date.match?(/Non connue/)  %>
+                      <p>📅 <%= race.date.gsub(/(au)/, ' au') %></p>
+                    <% end %>
+                    <p>📍 <%= race.address.gsub(/([()])/,' \1 ') %></p>
                   </div>
                 </div>
               <% end %>

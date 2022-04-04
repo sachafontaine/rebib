@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-8">
       <h2 class="mb-4">Sell your bib</h2>
       <%= simple_form_for @bib do |f| %>
-        <%= f.input :race, label: false, placeholder: "Name of the race" %>
+        <%= f.collection_select :race_id, Race.all, :id, :name, label: "Select the race" %>
         <%= f.input :price, label: false, placeholder: "Price of your bib" %>
         <%= f.submit "Submit", class: "btn btn-primary" %>
       <% end %>
@@ -14,3 +14,4 @@
     </div>
   </div>
 </div>
+<%=  %>
