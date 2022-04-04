@@ -5,4 +5,5 @@ class Race < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+  has_many :bibs
 end

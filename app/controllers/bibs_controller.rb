@@ -20,9 +20,10 @@ class BibsController < ApplicationController
     @bib = Bib.new(bib_params)
     authorize @bib
     @bib.user = current_user
-    @bib.race = Race.find(params[:race_id])
+    # @bib.race = Race.find(params[:race_id])
+    @bib.race_id = params[:bib][:race_id]
     if @bib.save
-      redirect_to bib_path(@bib), notice: 'Bib was successfully created.'
+      redirect_to dashboard_path, notice: 'Bib was successfully created.'
     else
       render :new
     end

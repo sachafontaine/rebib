@@ -3,7 +3,8 @@
     <div class="col-xs-12 col-sm-8">
       <h2 class="mb-4">Sell your bib</h2>
       <%= simple_form_for @bib do |f| %>
-        <%= f.collection_select :race_id, Race.all, :id, :name, label: "Select the race" %>
+       <%= f.input :race_id, as: :hidden, input_html: { value: params[:race_id] } %>
+        <%= f.collection_select :race_id, Race.all, :id, :name, prompt: true %>
         <%= f.input :price, label: false, placeholder: "Price of your bib" %>
         <%= f.submit "Submit", class: "btn btn-primary" %>
       <% end %>

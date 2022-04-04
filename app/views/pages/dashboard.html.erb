@@ -1,21 +1,20 @@
 <div class="container">
   <h1 class="mt-4"> Hello <%= current_user.first_name %>!</h1>
     <div class="mb-3">
-      <h2>Your bibs 👇🏽</h2>
+      <h2>Your bibs</h2>
       <% if current_user.bibs.count > 0 %>
         <div class="row">
           <% current_user.bibs.reverse.each do |bib| %>
             <div class="col-sm-4 col-md-4 mb-3">
-              <%= link_to program, class:"card-offer" do %>
+              <%= link_to bib, class:"card-offer" do %>
                 <div class="card-offer">
-                    <% if bib.race.photo.attached? %>
-                      <%= cl_image_tag bib.race.photo.key %>
-                    <% else %>
-                      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-                    <% end %>
+                  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
                   <div class="card-offer-infos">
                     <h4><%= bib.race.name %></h4>
-                    <p><%= bib.race.description %></p>
+                    <% unless bib.race.date.match?(/Non connue/)  %>
+                      <p>📅 <%= @bib.race.date.gsub(/(au)/, ' au') %></p>
+                    <% end %>
+                    <p>📍 <%= bib.race.address.gsub(/([()])/,' \1 ') %></p>
                   </div>
                 </div>
               <% end %>

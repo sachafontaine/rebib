@@ -1,54 +1,39 @@
-<%# <% <div class="footer">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-  </div>
-  <div class="footer-copyright">
-   <i class="fas fa-gem"></i> Roflex Ltd.
-  </div>
-</div> %>
 <div class = "footer">
-    <div class="container py-3">
-      <div class="row py-4">
-
-          <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-            <h6 class="text-uppercase font-weight-bold mb-4">RACES</h6>
-            <ul class="list-unstyled mb-0">
-              <li class="mb-2"><%= link_to("Calendar races", races_path) %></li>
-              <li class="mb-2"><%= link_to("My bibs", dashboard_path) %></li>
-              <li class="mb-2"><%= link_to("Sell your bib", new_bib_path) %></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-            <h6 class="text-uppercase font-weight-bold mb-4 ">COMPANY</h6>
-            <ul class="list-unstyled mb-0">
-              <li class="mb-2"><a href="#" class="">Our Blog</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-            <h6 class="text-uppercase font-weight-bold mb-4 ">RESOURCES</h6>
-              <ul class="list-unstyled mb-0">
-                <li class="mb-2"><%= link_to("Sign in", new_user_session_path) %></li>
-                <li class="mb-2"><%= link_to("Sign up", new_user_registration_path) %></li>
-              </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-lg-0">
-            <h6 class="text-uppercase font-weight-bold mb-4 border-bottom border-light ">Newsletter</h6>
-            <p class="mb-4 ">Follow our news to be aware of new races</p>
-            <div class="p-1 rounded border mb-4">
-              <div class="input-group">
-                <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1" class="form-control border-0 shadow-0">
-                <div class="input-group-append">
-                  <button id="button-addon1" type="submit" class="btn btn-link"><i class="fa fa-paper-plane"></i></button>
-                </div>
-              </div>
+  <div class="container py-3">
+    <div class="row py-4">
+      <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+        <h6 class="text-uppercase font-weight-bold mb-4">RACES</h6>
+        <ul class="list-unstyled mb-0">
+          <li class="mb-2"><%= link_to("Calendar races", races_path) %></li>
+          <li class="mb-2"><%= link_to("My bibs", dashboard_path) %></li>
+          <li class="mb-2"><%= link_to("Sell your bib", new_bib_path) %></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+        <h6 class="text-uppercase font-weight-bold mb-4 ">COMPANY</h6>
+        <ul class="list-unstyled mb-0">
+          <li class="mb-2"><a href="#" class="">Our Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+        <h6 class="text-uppercase font-weight-bold mb-4 ">RESOURCES</h6>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2"><%= link_to("Sign in", new_user_session_path) %></li>
+            <li class="mb-2"><%= link_to("Sign up", new_user_registration_path) %></li>
+          </ul>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-lg-0">
+        <h6 class="text-uppercase font-weight-bold mb-4 border-bottom border-light ">Newsletter</h6>
+        <p class="mb-4 ">Follow our news to be aware of new races</p>
+        <div class="p-1 rounded border mb-4">
+          <div class="input-group">
+            <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1" class="form-control border-0 shadow-0">
+            <div class="input-group-append">
+              <button id="button-addon1" type="submit" class="btn btn-link"><i class="fa fa-paper-plane"></i></button>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 </div>

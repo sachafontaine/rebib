@@ -9,7 +9,21 @@
       <% end %>
       <p>📍 <%= @race.address.gsub(/([()])/,' \1 ') %></p>
       <hr>
-      <%= link_to "Bibs on sale", races_path, class: "btn btn-primary" %>
+      <div class="row">
+        <% @race.bibs.first(6).each do |bib| %>
+          <div class="col-sm-6 col-md-6 mb-3">
+            <%= link_to bib, class:"card-offer" do %>
+              <div class="card-offer">
+                <div class="card-offer-infos">
+                  <h4>Bib of <%= bib.user.first_name %></h4>
+                  <p><%= bib.race.name %></p>
+                  <p>Created at <%= bib.created_at.to_date %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
     <div class="col-sm-4">
       <img class="rounded" width="100%" max-height="500" src="https://images.unsplash.com/photo-1444491741275-3747c53c99b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="">
