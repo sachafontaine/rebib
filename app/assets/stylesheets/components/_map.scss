@@ -1,0 +1,21 @@
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+}
+
+.map {
+  border-radius: 5px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.mapboxgl-ctrl-geocoder {
+  max-width: none;
+  width: 100%;
+  border: 1px solid lightgrey;
+  box-shadow: none;
+}

@@ -12,6 +12,13 @@ class RacesController < ApplicationController
     else
       @races = Race.all
     end
+    @markers = @races.geocoded.map do |race|
+      {
+        lat: race.latitude,
+        lng: race.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { race: race })
+      }
+    end
   end
 
   def new
@@ -21,7 +28,6 @@ class RacesController < ApplicationController
 
   def create
     @race = Race.new(race_params)
-    @race.user = current_user
     authorize @race
     if @race.save
       redirect_to race_path(@race), notice: 'Race was successfully created.'

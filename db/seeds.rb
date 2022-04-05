@@ -17,11 +17,11 @@ p "Creating races..."
 
 html = URI.open("https://jogging-plus.com/calendrier/courses-5-10-15-km/france/").read
 doc = Nokogiri::HTML(html, nil, "utf-8")
-doc.search("tr").drop(1).each do |element|
+doc.search("tr").first(10).each do |element|
   name = element.search(".lienorange").text.strip
   date = element.search("td:first-child").text.strip
   address = element.search("td:last-child").text.strip
-  race = Race.new(name: name, address: address, date: date)
+  race = Race.new(name: name, address: address, latitude: Geocoder.coordinates(address)[0], longitude: Geocoder.coordinates(address)[1], date: date)
   race.save
 end
 

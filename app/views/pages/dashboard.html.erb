@@ -1,7 +1,7 @@
 <div class="container">
-  <h1 class="mt-4"> Bonjour <%= current_user.first_name %> !</h1>
+  <h2 class="mt-4 text-center"> Bonjour <%= current_user.first_name %> !</h2>
     <div class="mb-3">
-      <h2>Vos dossards</h2>
+      <h3 class="text-center">Vos dossards</h3>
       <% if current_user.bibs.count > 0 %>
         <div class="row">
           <% current_user.bibs.reverse.each do |bib| %>
@@ -21,8 +21,10 @@
             </div>
           <% end %>
       <% else %>
-        <p>Don't have your first bib yet? Buy one!</p>
-        <%= link_to "Buy a bib", new_bib_path, class:"btn btn-primary" %>
+        <p class="text-center">Vous n'avez pas acheté votre premier dossard ? Profitez-en !</p>
+        <div class="text-center">
+          <%= link_to "Acheter un dossard", new_bib_path, class:"btn btn-primary" %>
+        </div>
       <% end %>
         </div>
     </div>
