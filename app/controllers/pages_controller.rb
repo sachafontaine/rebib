@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   def home
     @races = Race.all
   end
+
+  def calcul_allure
+
+  end
 end
