@@ -2,7 +2,7 @@
   <div class="row mt-4 mb-4">
     <div class="col-xs-12 col-sm-8">
       <h2 class="mb-4"> <%= @race.name %></h2>
-      <% unless @race.date.match?(/Non connue/) %>
+      <% unless @race.date.match?(/DATE NON COMMUNIQUEE/) %>
         <p>📅 <%= @race.date.gsub(/(au)/, ' au') %></p>
       <% else %>
         <p>📅 La date de cette course n'est pas connue de nos services. <%= link_to "Suggérer une date", edit_race_path %></p>

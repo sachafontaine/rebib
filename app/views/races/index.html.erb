@@ -11,7 +11,8 @@
                   <div class="card-offer">
                     <div class="card-offer-infos">
                       <h4><%= race.name %></h4>
-                      <% unless race.date.match?(/Non connue/)  %>
+                      <% if race.date.match?(/DATE NON COMMUNIQUEE/)  %>
+                      <% else %>
                         <p>📅 <%= race.date.gsub(/(au)/, ' au') %></p>
                       <% end %>
                       <p>📍 <%= race.address.gsub(/([()])/,' \1 ') %></p>
