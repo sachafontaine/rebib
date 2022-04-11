@@ -10,7 +10,8 @@
       <p>📍 <%= @race.address.gsub(/([()])/,' \1 ') %></p>
       <hr>
       <div class="row">
-        <% @race.bibs.first(6).each do |bib| %>
+      <% if @race.bibs.count > 0 %>
+        <% @race.bibs.each do |bib| %>
           <div class="col-sm-6 col-md-6 mb-3">
             <%= link_to bib, class:"card-offer" do %>
               <div class="card-offer">
@@ -23,6 +24,12 @@
             <% end %>
           </div>
         <% end %>
+      <% else %>
+        <p>Il n'y a pas de dossards à vendre sur Rebib pour cette course.</p>
+        <div class="col-sm-4">
+          <%= link_to "Vendre un dossard", new_bib_path, class: "btn btn-primary" %>
+        </div>
+      <% end %>
       </div>
     </div>
     <div class="col-sm-4">

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row w-100-custom">
+    <div class="program-list mb-4 col-md-12">
+      <h2 class="text-center mt-4 mb-4">Dossards en vente sur Rebib</h2>
+        <% if @bibs.count > 0 %>
+          <div class="row">
+            <% @bibs.each do |bib| %>
+              <div class="col-sm-4 col-md-4 mb-3">
+                <%= link_to bib, class:"card-offer" do %>
+                  <div class="card-offer">
+                    <div class="card-offer">
+                      <div class="card-offer-infos">
+                        <h4><%= bib.race.name %></h4>
+                        <p>📍 <%= bib.race.address.gsub(/([()])/,' \1 ') %></p>
+                        <p>🙋🏼‍♂️ Dossard de <%= bib.user.first_name %></p>
+                        <p>📅 <%= bib.created_at.strftime("Déposé le %m/%d/%Y") %></p>
+                        <%= link_to "Voir", bib_path(bib), class: "btn btn-primary" %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <%= link_to "Vendez votre dossard", new_bib_path, class:"btn btn-primary" %>
+        <% end %>
+    </div>
+  </div>
+</div>

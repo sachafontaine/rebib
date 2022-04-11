@@ -4,8 +4,8 @@
       <h2 class="mb-4">Vendez votre dossard</h2>
       <%= simple_form_for @bib do |f| %>
        <%= f.input :race_id, as: :hidden, input_html: { value: params[:race_id] } %>
-        <%= f.collection_select :race_id, Race.all, :id, :name, prompt: "Sélectionnez votre course" %>
-        <%= f.input :price, label: false, placeholder: "Prix du dossard" %>
+        <%= f.collection_select :race_id, Race.all, :id, :name, prompt: "Les courses déjà présentes sur Rebib" %>
+        <%= f.input :price, as: :float, label: false, placeholder: "Prix du dossard" %>
         <%= f.submit "Envoyer", class: "btn btn-primary" %>
       <% end %>
       <%= link_to "Retour aux courses", races_path %>

@@ -14,11 +14,11 @@
           <li class="nav-item active">
             <%= link_to "Courses", races_path, class: "nav-link" %>
           </li>
-          <li class="nav-item dropdown">
-            <%= link_to "Ressources", "#", class:"nav-link dropdown-toggle shadow-sm mx-2", id:"navbarDropdown", data: { bs_toggle: "dropdown"}, aria: {haspopup: "true", expanded:false} %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Calcul d'allure", calcul_allure_path, class: "text-decoration-none dropdown-item" %>
-            </div>
+          <li class="nav-item active">
+            <%= link_to "Dossards", bibs_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Ressources", ressources_path, class: "nav-link" %>
           </li>
           <% if user_signed_in? %>
             <li class="nav-item dropdown">
