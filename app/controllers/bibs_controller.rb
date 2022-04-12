@@ -23,6 +23,7 @@ class BibsController < ApplicationController
     # @bib.race = Race.find(params[:race_id])
     @bib.race_id = params[:bib][:race_id]
     if @bib.save
+      @bib.race = @bib.sku
       redirect_to dashboard_path, notice: 'Bib was successfully created.'
     else
       render :new

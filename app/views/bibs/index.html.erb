@@ -14,6 +14,7 @@
                         <p>📍 <%= bib.race.address.gsub(/([()])/,' \1 ') %></p>
                         <p>🙋🏼‍♂️ Dossard de <%= bib.user.first_name %></p>
                         <p>📅 <%= bib.created_at.strftime("Déposé le %m/%d/%Y") %></p>
+                        <p>Prix : <%= humanized_money_with_symbol(bib.price) %></p>
                         <%= link_to "Voir", bib_path(bib), class: "btn btn-primary" %>
                       </div>
                     </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_05_093804) do
+ActiveRecord::Schema.define(version: 2022_04_12_142802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,13 +44,27 @@ ActiveRecord::Schema.define(version: 2022_04_05_093804) do
   end
 
   create_table "bibs", force: :cascade do |t|
-    t.decimal "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.bigint "race_id", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.string "sku"
     t.index ["race_id"], name: "index_bibs_on_race_id"
     t.index ["user_id"], name: "index_bibs_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.string "bib_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session_id"
+    t.bigint "user_id", null: false
+    t.bigint "bib_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bib_id"], name: "index_orders_on_bib_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "races", force: :cascade do |t|
@@ -61,6 +75,7 @@ ActiveRecord::Schema.define(version: 2022_04_05_093804) do
     t.string "date"
     t.float "latitude"
     t.float "longitude"
+    t.integer "sport"
   end
 
   create_table "users", force: :cascade do |t|
@@ -82,4 +97,6 @@ ActiveRecord::Schema.define(version: 2022_04_05_093804) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bibs", "races"
   add_foreign_key "bibs", "users"
+  add_foreign_key "orders", "bibs"
+  add_foreign_key "orders", "users"
 end

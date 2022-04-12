@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row py-4">
+    <div class="col">
+      <h2>Commande #<%= @order.id %> <small><span class="etiquette"><%= @order.state %></span></small></h2>
+      <ul class="list-unstyled">
+        <li><strong>Dossard acheté le : </strong> <%= @order.created_at.to_date %></li>
+        <li><strong>Course : </strong> <%= @order.bib.race.name %></li>
+        <li><strong>Prix total : </strong> <%= humanized_money_with_symbol @order.amount %></li>
+        </li>
+      </ul>
+      <p>Vous pouvez dès à présent <%= link_to "télécharger" %> ce certificat d'achat.</p>
+      <p>Pour tout renseignement, vous pouvez dès à présent contacter <%= link_to @order.bib.user.first_name %> ou le service client de Rebib</p>
+    </div>
+  </div>
+</div>
