@@ -1,7 +1,7 @@
 class Race < ApplicationRecord
   include PgSearch::Model
-  has_one_attached :photo
   has_many :bibs
+  has_one_attached :photo
   geocoded_by :address
   pg_search_scope :search_by_name,
     against: [ :name ],
@@ -10,8 +10,8 @@ class Race < ApplicationRecord
     }
   after_validation :geocode, if: :will_save_change_to_address?
   enum sport: {
-    Running: 0,
-    Bike: 1,
-    Triathlon: 2
+    running: 0,
+    bike: 1,
+    triathlon: 2
   }
 end
