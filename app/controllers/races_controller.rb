@@ -9,6 +9,8 @@ class RacesController < ApplicationController
   def index
     if params[:query].present?
       @races = Race.where("name ILIKE ?", "%#{params[:query]}%")
+    elsif params[:sport]
+      @races = Race.where(sport: params[:sport])
     else
       @races = Race.all
     end

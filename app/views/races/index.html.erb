@@ -4,6 +4,11 @@
       <div class="mt-4 mb-4">
         <%= render 'shared/searchbar' %>
       </div>
+      <div class="mb-4">
+        <%= link_to "Running", races_path(:sport=>"running"), class:"etiquette-filter px-4 py-2" %>
+        <%= link_to "Vélo", races_path(:sport=>"bike"), class:"etiquette-filter px-4 py-2" %>
+        <%= link_to "Triathlon", races_path(:sport=>"triathlon"), class:"etiquette-filter px-4 py-2" %>
+      </div>
       <% if @races.count > 0 %>
         <div class="row">
           <% @races.each do |race| %>

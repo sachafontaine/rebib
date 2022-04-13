@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     resources :payments, only: :new
   end
   get 'dashboard', to: 'pages#dashboard'
-  get 'calcul_allure', to: 'pages#calcul_allure'
   get 'ressources', to: 'pages#ressources'
+  get 'calcul_allure', to: 'pages#calcul_allure'
+  get 'programme', to: 'pages#programme'
+  get 'alimentation', to: 'pages#alimentation'
+  get 'shop', to: 'pages#shop'
 end

@@ -3,3 +3,14 @@
   color: white;
   border-radius: 5px;
 }
+
+.etiquette-filter {
+  background-color: $secondary;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.etiquette-filter:hover {
+  color: white;
+}
