@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-4 mb-4">
     <div class="col-xs-12 col-sm-8">
-      <h2 class="mb-4">Ajouter une course</h2>
+      <h3 class="mb-4">Ajouter une course</h3>
       <%= simple_form_for @race do |f| %>
         <%= f.input :name, label: "Nom de la course" %>
         <%= f.input :sport,
@@ -17,7 +17,6 @@
                       label: "Ville de la course",
                       wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
         <%= f.input :date, as: :date, html5: true, label: "Date de la course" %>
-        <%= f.input :photo, as: :file, label: "Photo d'illustration de la course" %>
         <%= f.submit "Envoyer", class: "btn btn-primary" %>
       <% end %>
       <div class="mt-3">

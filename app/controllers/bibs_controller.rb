@@ -7,7 +7,7 @@ class BibsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
   def index
-    @bibs = Bib.all
+    @bibs = Bib.all.where(available: "1")
   end
 
   def new
@@ -24,13 +24,16 @@ class BibsController < ApplicationController
     @bib.race_id = params[:bib][:race_id]
     if @bib.save
       @bib.race = @bib.sku
-      redirect_to dashboard_path, notice: 'Bib was successfully created.'
+      redirect_to dashboard_path, notice: 'Votre dossard a bien été créée.'
     else
       render :new
     end
   end
 
   def show
+    if @bib.available == '2'
+      redirect_to bibs_path, notice: 'Désolé, le dossard a déjà été vendu.'
+    end
   end
 
   def edit
