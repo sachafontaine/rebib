@@ -20,7 +20,6 @@ class BibsController < ApplicationController
     @bib = Bib.new(bib_params)
     authorize @bib
     @bib.user = current_user
-    # @bib.race = Race.find(params[:race_id])
     @bib.race_id = params[:bib][:race_id]
     if @bib.save
       @bib.race = @bib.sku
@@ -31,8 +30,10 @@ class BibsController < ApplicationController
   end
 
   def show
-    if @bib.available == '2'
-      redirect_to bibs_path, notice: 'Désolé, le dossard a déjà été vendu.'
+    unless current_user == @bib.user
+      if @bib.available == '2'
+        redirect_to bibs_path, notice: 'Désolé, le dossard a déjà été vendu.'
+      end
     end
   end
 

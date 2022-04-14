@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   def create
     @bib = Bib.find(params[:bib_id])
     # authorize @order
-    order = Order.create!(bib: @bib, bib_sku: @bib.sku, amount: @bib.price, state: 'pending', user: current_user)
+    order = Order.create!(bib: @bib, bib_sku: @bib.sku, amount: @bib.price, state: 'en attente de paiement', user: current_user)
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{

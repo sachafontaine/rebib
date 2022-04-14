@@ -13,9 +13,11 @@
       <p>⏰ Déposé le : <%= @bib.created_at.to_date.strftime('%d/%m/%Y') %></p>
       <p>Prix : <%= humanized_money_with_symbol(@bib.price) %></p>
       <hr>
-      <%= form_tag orders_path do %>
-        <%= hidden_field_tag 'bib_id', @bib.id %>
-        <%= submit_tag 'Acheter', class: 'btn btn-primary' %>
+      <% unless current_user = @bib.user %>
+        <%= form_tag orders_path do %>
+          <%= hidden_field_tag 'bib_id', @bib.id %>
+          <%= submit_tag 'Acheter', class: 'btn btn-primary' %>
+        <% end %>
       <% end %>
     </div>
   </div>
