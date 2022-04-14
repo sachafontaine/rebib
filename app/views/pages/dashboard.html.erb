@@ -19,15 +19,16 @@
 
     <div class="tab-content">
 
-        <div class="cards" id="your-orders" data-switch-tab-target="content" data-tab-name="orders-user">
+        <div class="cards-dashboard" id="your-orders" data-switch-tab-target="content" data-tab-name="orders-user">
           <% current_user.orders.each do |order| %>
-            <div class="col-sm-6 col-md-6 mb-3">
+            <div class="mb-3">
               <%= link_to order, class:"card-offer" do %>
                 <div class="card-offer">
                   <div class="card-offer-infos">
                     <h4><%= order.bib.race.name %></h4>
-                    <p>Départ le : <%= order.bib.race.date.to_date.strftime('%d/%m/%Y') %></p>
+                    <p><strong>Le <%= order.bib.race.date.to_date.strftime('%d %B %Y') %></strong></p>
                     <p>📍 <%= order.bib.race.address.gsub(/([()])/,' \1 ') %></p>
+                    <%= link_to "Voir", order_path(order), class: "btn btn-primary" %>
                   </div>
                 </div>
               <% end %>
@@ -35,24 +36,24 @@
           <% end %>
         </div>
 
-        <div class="cards d-none" id="your-bibs" data-switch-tab-target="content" data-tab-name="bibs-user">
+        <div class="cards-dashboard d-none" id="your-bibs" data-switch-tab-target="content" data-tab-name="bibs-user">
           <% if current_user.bibs.count > 0 %>
             <div class="row">
               <% current_user.bibs.reverse.each do |bib| %>
-                <div class="col-sm-6 col-md-6 mb-3">
+                <div class="mb-3">
                   <%= link_to bib, class:"card-offer" do %>
-                    <div class="card-offer">
+                    <div class="card-offer row">
                       <div class="card-offer-infos">
-                      <div class="col-md-3 etiquette-status px-2 py-2 mb-2">
-                        <% if bib.available == '2' %>
-                          <p>Vendu</p>
-                        <% else %>
-                          <p>En vente</p>
-                        <% end %>
-                      </div>
                         <h4><%= bib.race.name %></h4>
                         <p>Départ le : <%= bib.race.date.to_date.strftime('%d/%m/%Y') %></p>
                         <p>📍 <%= bib.race.address.gsub(/([()])/,' \1 ') %></p>
+                        <div class="etiquette-status px-2 py-2 mb-2">
+                          <% if bib.available == '2' %>
+                            <p>Vendu</p>
+                          <% else %>
+                            <p>En vente</p>
+                          <% end %>
+                        </div>
                       </div>
                     </div>
                   <% end %>

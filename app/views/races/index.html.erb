@@ -6,7 +6,7 @@
       </div>
       <div class="mb-4">
         <%= link_to "Running", races_path(:sport=>"running"), class:"etiquette-filter px-4 py-2" %>
-        <%= link_to "Vélo", races_path(:sport=>"bike"), class:"etiquette-filter px-4 py-2" %>
+        <%= link_to "Bike", races_path(:sport=>"bike"), class:"etiquette-filter px-4 py-2" %>
         <%= link_to "Triathlon", races_path(:sport=>"triathlon"), class:"etiquette-filter px-4 py-2" %>
       </div>
       <% if @races.count > 0 %>
@@ -25,8 +25,11 @@
             </div>
           <% end %>
         </div>
+      <% elsif params[:sport].present? %>
+        <p>Aucune course <%= params[:sport] %> n'est disponible pour le moment.</p>
+        <%= link_to "Ajouter une course", new_race_path, class:"btn btn-primary" %>
       <% else %>
-      <h4>Aucune course pour le moment n'est disponible.</h4>
+      <p>Aucune course n'est disponible pour le moment.</p>
         <%= link_to "Ajouter une course", new_race_path, class:"btn btn-primary" %>
       <% end %>
     </div>
