@@ -1,8 +1,0 @@
-<div>
-  Chatting with <%= chatroom.with(current_user).first_name %>
-  <br>
-  <em><%= chatroom.messages.last.body.truncate(50) %></em>
-  <br>
-  <%= link_to 'View chatroom', chatroom_path(chatroom) %>
-  <hr>
-</div>

@@ -1,27 +1,36 @@
 class MessagesController < ApplicationController
-  before_action :find_chatroom!
+  before_action do
+    @conversation = Conversation.find(params[:conversation_id])
+  end
 
-  def create
-    @chatroom ||= Chatroom.create(sender_id: current_user.id, receiver_id: @receiver.id)
-    @message = current_user.messages.build(message_params)
-    @message.chatroom_id = @chatroom.id
-    @message.save!
-    flash[:success] = "Votre message est bien envoyé !"
-    redirect_to chatroom_path(@chatroom)
+  def index
+    @messages = @conversation.messages
+    @message = @conversation.messages.new
   end
 
   def new
-    @message = current_user.messages.build
+    @message = @conversation.messages.new
+  end
+
+  def create
+    # @message = @conversation.messages.new(message_params)
+    # if @message.save
+    #   redirect_to conversation_messages_path(@conversation)
+    # end
+    @conversation = Conversation.find(params[:conversation_id])
+    @message = Message.new(message_params)
+    @message.conversation = @conversation
+    @message.user = current_user
+    if @message.save
+      redirect_to conversation_path(@conversation, anchor: "message-#{@message.id}")
+    else
+      render "conversations/show"
+    end
   end
 
   private
 
   def message_params
-    params.require(:message).permit(:body)
-  end
-
-  def find_chatroom!
-    @chatroom = Chatroom.find_by(id: params[:chatroom_id])
-    redirect_to(root_path) and return unless @chatroom && @chatroom.participates?(current_user)
+    params.require(:message).permit(:content, :user_id)
   end
 end

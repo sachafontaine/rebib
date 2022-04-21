@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:index]
 
-  resources :messages, only: [:new, :create]
-  resources :chatrooms, only: [:show, :index]
+  resources :conversations do
+    resources :messages
+  end
 
   resources :orders, only: [:show, :create] do
     resources :payments, only: :new
