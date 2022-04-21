@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :bibs
 
   devise_for :users
+  resources :users, only: [:index]
+
+  resources :messages, only: [:new, :create]
+  resources :chatrooms, only: [:show, :index]
 
   resources :orders, only: [:show, :create] do
     resources :payments, only: :new

@@ -20,6 +20,9 @@
           <li class="nav-item active">
             <%= link_to "Ressources", ressources_path, class: "nav-link" %>
           </li>
+          <li class="nav-item active">
+            <li><%= link_to 'Users', users_path, class: "nav-link" %></li>
+          </li>
           <% if user_signed_in? %>
             <li class="nav-item dropdown">
               <% if current_user.photo.attached? %>

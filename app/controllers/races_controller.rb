@@ -31,9 +31,10 @@ class RacesController < ApplicationController
 
   def create
     @race = Race.new(race_params)
+    @race.user = current_user
     authorize @race
     if @race.save
-      redirect_to race_path(@race), notice: 'Race was successfully created.'
+      redirect_to race_path(@race), notice: 'La course a bien été créée.'
     else
       render :new
     end

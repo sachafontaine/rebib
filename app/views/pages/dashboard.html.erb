@@ -38,28 +38,26 @@
 
         <div class="cards-dashboard d-none" id="your-bibs" data-switch-tab-target="content" data-tab-name="bibs-user">
           <% if current_user.bibs.count > 0 %>
-            <div class="row">
-              <% current_user.bibs.reverse.each do |bib| %>
-                <div class="mb-3">
-                  <%= link_to bib, class:"card-offer" do %>
-                    <div class="card-offer row">
-                      <div class="card-offer-infos">
-                        <h4><%= bib.race.name %></h4>
-                        <p>Départ le : <%= bib.race.date.to_date.strftime('%d/%m/%Y') %></p>
-                        <p>📍 <%= bib.race.address.gsub(/([()])/,' \1 ') %></p>
-                        <div class="etiquette-status px-2 py-2 mb-2">
-                          <% if bib.available == '2' %>
-                            <p>Vendu</p>
-                          <% else %>
-                            <p>En vente</p>
-                          <% end %>
-                        </div>
+            <% current_user.bibs.reverse.each do |bib| %>
+              <div class="mb-3">
+                <%= link_to bib, class:"card-offer" do %>
+                  <div class="card-offer">
+                    <div class="card-offer-infos">
+                      <h4><%= bib.race.name %></h4>
+                      <p>Départ le : <%= bib.race.date.to_date.strftime('%d/%m/%Y') %></p>
+                      <p>📍 <%= bib.race.address.gsub(/([()])/,' \1 ') %></p>
+                      <div class="etiquette-status px-2 py-2 mb-2">
+                        <% if bib.available == '2' %>
+                          <p>Vendu</p>
+                        <% else %>
+                          <p>En vente</p>
+                        <% end %>
                       </div>
                     </div>
-                  <% end %>
-                </div>
-              <% end %>
-            </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
           <% else %>
             <p class="text-center">Vous n'avez pas acheté votre premier dossard ? Profitez-en !</p>
             <div class="text-center">

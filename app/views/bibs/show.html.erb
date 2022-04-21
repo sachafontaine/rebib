@@ -17,12 +17,16 @@
         <span class="etiquette-purchased px-4 py-2">Ce dossard a été vendu !</span>
       </div>
       <% end %>
-      <% unless current_user = @bib.user %>
+
+      <%# <% unless current_user = @bib.user %>
         <%= form_tag orders_path do %>
           <%= hidden_field_tag 'bib_id', @bib.id %>
           <%= submit_tag 'Acheter', class: 'btn btn-primary' %>
         <% end %>
-      <% end %>
+      <%# <% end %>
+
+      <%= link_to 'Contacter le propriétaire', users_path %>
+
     </div>
   </div>
 </div>

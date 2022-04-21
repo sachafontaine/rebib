@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_13_142205) do
+ActiveRecord::Schema.define(version: 2022_04_21_120341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,26 @@ ActiveRecord::Schema.define(version: 2022_04_13_142205) do
     t.index ["user_id"], name: "index_bibs_on_user_id"
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.index ["sender_id", "receiver_id"], name: "index_chatrooms_on_sender_id_and_receiver_id", unique: true
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "body"
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.string "state"
     t.string "bib_sku"
@@ -73,10 +93,12 @@ ActiveRecord::Schema.define(version: 2022_04_13_142205) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "address"
-    t.string "date"
     t.float "latitude"
     t.float "longitude"
     t.integer "sport"
+    t.bigint "user_id", null: false
+    t.datetime "date"
+    t.index ["user_id"], name: "index_races_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -98,6 +120,9 @@ ActiveRecord::Schema.define(version: 2022_04_13_142205) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bibs", "races"
   add_foreign_key "bibs", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "orders", "bibs"
   add_foreign_key "orders", "users"
+  add_foreign_key "races", "users"
 end
