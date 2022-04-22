@@ -18,12 +18,11 @@
       </div>
       <% end %>
       <% unless current_user == @bib.user %>
-        <%= form_tag orders_path do %>
-          <%= hidden_field_tag 'bib_id', @bib.id %>
-          <%= submit_tag 'Acheter', class: 'btn btn-primary' %>
-        <% end %>
-        <hr>
-        <%= link_to "Envoyer un message", conversations_path(@conversation, sender_id: current_user.id, recipient_id: @bib.user.id), method: "post" %>
+        <%# <%= form_tag orders_path do %>
+          <%# <%= hidden_field_tag 'bib_id', @bib.id %>
+          <%# <%= submit_tag 'Acheter', class: 'btn btn-primary' %>
+        <%# <% end %>
+        <%= link_to "Contacter le propriétaire", conversations_path(@conversation, sender_id: current_user.id, recipient_id: @bib.user.id), method: "post", class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
