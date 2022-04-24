@@ -34,6 +34,7 @@ export default class extends Controller {
       customMarker.className = "marker"
       customMarker.style.backgroundImage = `url('${marker.image_url}')`
       customMarker.style.backgroundSize = "contain"
+      customMarker.style.backgroundRepeat = "no-repeat"
       customMarker.style.width = "45px"
       customMarker.style.height = "45px"
 

@@ -28,3 +28,11 @@
     }
   }
 }
+
+.conversation-feed {
+  background-color: white;
+  border: 1px solid $primary;
+  a {
+    text-decoration: none;
+  }
+}

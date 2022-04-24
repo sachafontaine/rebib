@@ -19,7 +19,7 @@ class RacesController < ApplicationController
         lat: race.latitude,
         lng: race.longitude,
         info_window: render_to_string(partial: "info_window", locals: { race: race }),
-        image_url: helpers.asset_url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Running_icon_-_Noun_Project_17825.svg/1200px-Running_icon_-_Noun_Project_17825.svg.png")
+        image_url: helpers.image_path('running.png')
       }
     end
   end

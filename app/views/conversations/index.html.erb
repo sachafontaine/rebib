@@ -1,18 +1,22 @@
 <div class="container col-md-6">
   <h2 class="text-center mt-4 mb-4">Vos messages 📨</h2>
   <% @conversations.each do |conversation| %>
-    <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-        <% if conversation.sender_id == current_user.id %>
-          <% recipient = User.find(conversation.recipient_id) %>
-        <% else %>
-          <% recipient = User.find(conversation.sender_id) %>
-        <% end %>
-
-        <div class="text-center">
-          <% if current_user != recipient %>
-            <h4><%= link_to recipient.first_name, conversation_path(conversation)%></h4>
+    <div class="conversation-feed">
+      <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+          <% if conversation.sender_id == current_user.id %>
+            <% recipient = User.find(conversation.recipient_id) %>
+          <% else %>
+            <% recipient = User.find(conversation.sender_id) %>
           <% end %>
-        </div>
-    <% end %>
+
+        <%= link_to conversation_path(conversation) do %>
+          <div class="text-center">
+            <% if current_user != recipient %>
+              <h4><%= recipient.first_name %></h4>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
 </div>
