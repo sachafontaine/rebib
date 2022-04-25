@@ -8,7 +8,7 @@
           <div class="card-offer">
             <div class="card-offer-infos">
               <h4><%= race.name %></h4>
-              <p>Départ le : <%= race.date.to_date.strftime('%d/%m/%Y') %></p>
+              <p>Départ le <%= race.date.to_date.strftime('%d %B %Y') %></p>
               <p>📍 <%= race.address.gsub(/([()])/,' \1 ') %></p>
             </div>
           </div>

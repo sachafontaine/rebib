@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row mt-4 mb-4 d-flex justify-content-center text-center">
-    <div class="col-xs-12 col-sm-8">
+    <div class="col-xs-12 col-sm-6 bib p-4 m-4">
       <div class="mt-4">
-        <span class="etiquette px-4 py-2">Dossard</span>
+        <span class="etiquette-bib px-4 py-2">Dossard</span>
       </div>
       <h2 class="mt-3 mb-3"><%= @bib.race.name %></h2>
       <div class="mt-4">
-        <p>🏃🏽 Départ le : <%= @bib.race.date.to_date.strftime('%d/%m/%Y') %></p>
+        <p>🏃🏽 Départ le <%= @bib.race.date.to_date.strftime('%d %B %Y') %></p>
       </div>
       <p>📍 <%= @bib.race.address.gsub(/([()])/,' \1 ') %></p>
       <p>🙋🏼‍♂️ Propriétaire de ce dossard : <%= @bib.user.first_name %></p>
       <p>📅 <%= @bib.created_at.strftime("Déposé le %d %B %Y") %></p>
-      <p>Prix : <%= humanized_money_with_symbol(@bib.price) %></p>
+      <p><strong><%= humanized_money_with_symbol(@bib.price) %></strong></p>
       <% if @bib.available == '2' %>
         <div class="mt-4">
           <span class="etiquette-purchased px-4 py-2">Ce dossard a été vendu !</span>
@@ -22,8 +22,11 @@
           <%# <%= hidden_field_tag 'bib_id', @bib.id %>
           <%# <%= submit_tag 'Acheter', class: 'btn btn-primary' %>
         <%# <% end %>
-        <%= link_to "Contacter le propriétaire", conversations_path(@conversation, sender_id: current_user, recipient_id: @bib.user.id), method: "post", class: "btn btn-primary" %>
+        <%= link_to "Contacter le propriétaire", conversations_path(@conversation, sender_id: current_user, recipient_id: @bib.user.id), method: "post", class: "btn btn-white mb-3" %>
       <% end %>
+      <div>
+        <%= link_to "Retour à la course", race_path(@bib.race) %>
+      </div>
     </div>
   </div>
 </div>

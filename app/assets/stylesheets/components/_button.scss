@@ -25,6 +25,19 @@
   color: white;
 }
 
+.btn-white {
+  color: $secondary !important;
+  background: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.btn-white:hover {
+  background: $primary;
+  color: white !important;
+}
+
 .btn-gradient {
   color: white;
   padding: 8px 24px;

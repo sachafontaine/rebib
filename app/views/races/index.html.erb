@@ -17,7 +17,13 @@
                 <div class="card-offer">
                   <div class="card-offer-infos">
                     <h4><%= race.name %></h4>
-                    <p>🏃🏽 Départ le : <%= race.date.to_date.strftime('%d/%m/%Y') %></p>
+                    <% if race.sport == "running" %>
+                      <p>🏃🏽 <%= race.date.to_date.strftime('%d %B %Y') %></p>
+                    <% elsif race.sport == "bike" %>
+                      <p>🚴🏼 <%= race.date.to_date.strftime('%d %B %Y') %></p>
+                    <% elsif race.sport == "triathlon" %>
+                      <p>🏊🏼‍♂️ <%= race.date.to_date.strftime('%d %B %Y') %></p>
+                    <% end %>
                     <p>📍 <%= race.address.gsub(/([()])/,' \1 ') %></p>
                   </div>
                 </div>
