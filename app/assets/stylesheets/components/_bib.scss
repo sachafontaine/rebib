@@ -1,6 +1,5 @@
 .bib {
   background-color: $secondary;
-  // border: 1px solid $secondary;
   border-radius: 5px;
   color: white;
   h2 {
@@ -8,5 +7,6 @@
   }
   a {
     color: white;
+    text-decoration: none;
   }
 }

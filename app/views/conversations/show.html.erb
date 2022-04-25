@@ -1,8 +1,5 @@
-<% require "date" %>
-
 <h2 class="text-center mt-5 mb-4"><%= current_user == @conversation.sender ? @conversation.recipient.first_name : @conversation.sender.first_name %> 📨</h2>
   <div class="container conversation col-md-6 mt-4 mb-5" data-controller="conversation-subscription" data-conversation-subscription-conversation-id-value="<%= @conversation.id %>">
-
     <div class="messages" data-conversation-subscription-target="messages">
       <% @conversation.messages.each do |message| %>
         <div id="message-<%= message.id %>">
@@ -14,11 +11,12 @@
         </div>
       <% end %>
     </div>
-    <div class="search">
-      <%= simple_form_for [@conversation, @message], remote: true,
-        html: {data: {"conversation-subscription-target" => "form"}, class: "d-flex" } do |f| %>
+    <%= simple_form_for [@conversation, @message], remote: true,
+      html: {data: {"conversation-subscription-target" => "form"} } do |f| %>
+      <div class="search-form-control form-group">
         <%= f.input :content, label: false, placeholder: "Écrivez votre message ici", wrapper_html: {class: "flex-grow-1"} %>
         <%= f.submit "Envoyer", class: "btn btn-primary" %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
+  </div>
 </div>

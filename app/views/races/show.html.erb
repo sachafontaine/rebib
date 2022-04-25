@@ -7,26 +7,27 @@
       <p>📍 A lieu à <%= @race.address.gsub(/([()])/,' \1 ') %></p>
       <hr>
       <div class="row">
-      <% if @race.bibs.where(available: "1").count > 0 %>
-        <% @race.bibs.where(available: "1").each do |bib| %>
-          <div class="col-sm-6 col-md-6 mb-3">
-            <%= link_to bib, class:"card-offer" do %>
-              <div class="card-offer">
-                <div class="card-offer-infos">
-                  <h4>Dossard de <%= bib.user.first_name %></h4>
-                  <p><%= bib.created_at.strftime("Déposé le %m %B %Y") %></p>
-                  <%= link_to "Voir le dossard", bib_path(bib), class: "btn btn-primary" %>
+        <h4 class="mb-3">Dossards en vente</h4>
+        <% if @race.bibs.where(available: "1").count > 0 %>
+          <% @race.bibs.where(available: "1").each do |bib| %>
+            <div class="col-sm-4 col-md-4 mb-3">
+              <%= link_to bib, class:"card-offer" do %>
+                <div class="card-offer">
+                  <div class="card-offer-infos">
+                    <h4>Dossard de <%= bib.user.first_name %></h4>
+                    <p><%= bib.created_at.strftime("Déposé le %m %B %Y") %></p>
+                    <%= link_to "Voir", bib_path(bib), class: "btn btn-primary" %>
+                  </div>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <p>Il n'y a pas de dossards à vendre sur Rebib pour cette course.</p>
+          <div class="col-sm-4">
+            <%= link_to "Vendre un dossard", new_bib_path, class: "btn btn-primary" %>
           </div>
         <% end %>
-      <% else %>
-        <p>Il n'y a pas de dossards à vendre sur Rebib pour cette course.</p>
-        <div class="col-sm-4">
-          <%= link_to "Vendre un dossard", new_bib_path, class: "btn btn-primary" %>
-        </div>
-      <% end %>
       </div>
     </div>
     <div class="col-sm-4">
