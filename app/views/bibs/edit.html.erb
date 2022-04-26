@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row mt-4 mb-4">
+    <div class="col-xs-12 col-sm-8">
+      <h2 class="mb-4">Modifiez votre dossard</h2>
+      <hr>
+      <%= simple_form_for @bib do |f| %>
+        <%= f.input :race_id, as: :hidden, input_html: { value: params[:race_id] } %>
+        <%= f.collection_select :race_id, Race.all, :id, :name, prompt: "Les courses déjà présentes sur Rebib", class: "form-dropdown" %>
+        <%= f.input :price, as: :float, label: false, placeholder: "Prix du dossard" %>
+        <%= f.submit "Publier", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+    <div class="col-sm-4">
+      <img class="rounded" width="100%" max-height="500" src="https://images.unsplash.com/photo-1508730328641-47c1616341b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=930&q=80" alt="">
+    </div>
+  </div>
+</div>
+<%=  %>

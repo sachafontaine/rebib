@@ -13,7 +13,7 @@
       <p>📅 <%= @bib.created_at.strftime("Déposé le %d %B %Y") %></p>
       <p><strong><%= humanized_money_with_symbol(@bib.price) %></strong></p>
       <% if @bib.available == '2' %>
-        <div class="mt-4">
+        <div class="mt-4 mb-4">
           <span class="etiquette-purchased px-4 py-2">Ce dossard a été vendu !</span>
         </div>
       <% end %>
@@ -23,6 +23,8 @@
           <%# <%= submit_tag 'Acheter', class: 'btn btn-primary' %>
         <%# <% end %>
         <%= link_to "Contacter le propriétaire", conversations_path(@conversation, sender_id: current_user, recipient_id: @bib.user.id), method: "post", class: "btn btn-white mb-3" %>
+      <% else %>
+        <%= link_to "Modifier mon dossard", edit_bib_path(@bib), class: "btn btn-white mb-3" %>
       <% end %>
       <div>
         <%= link_to "Retour à la course", race_path(@bib.race) %>
