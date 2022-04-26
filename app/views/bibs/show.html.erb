@@ -12,9 +12,9 @@
       <p>🙋🏼‍♂️ Propriétaire de ce dossard : <%= @bib.user.first_name %></p>
       <p>📅 <%= @bib.created_at.strftime("Déposé le %d %B %Y") %></p>
       <p><strong><%= humanized_money_with_symbol(@bib.price) %></strong></p>
-      <% if @bib.available == '2' %>
+      <% if @bib.available == "unfree" %>
         <div class="mt-4 mb-4">
-          <span class="etiquette-purchased px-4 py-2">Ce dossard a été vendu !</span>
+          <span class="etiquette-purchased px-4 py-2">Ce dossard n'est plus disponible</span>
         </div>
       <% end %>
       <% unless current_user == @bib.user %>

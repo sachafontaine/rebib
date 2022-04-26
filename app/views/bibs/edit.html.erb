@@ -5,9 +5,16 @@
       <hr>
       <%= simple_form_for @bib do |f| %>
         <%= f.input :race_id, as: :hidden, input_html: { value: params[:race_id] } %>
-        <%= f.collection_select :race_id, Race.all, :id, :name, prompt: "Les courses déjà présentes sur Rebib", class: "form-dropdown" %>
-        <%= f.input :price, as: :float, label: false, placeholder: "Prix du dossard" %>
-        <%= f.submit "Publier", class: "btn btn-primary" %>
+        <%= f.collection_select :race_id, Race.all, :id, :name %>
+        <%= f.input :price_cents, as: :float, label: "Nouveau prix du dossard ?", required: true, input_html: { autocomplete: "off" } %>
+        <%= f.input :available,
+                        required: true,
+                        input_html: { autocomplete: "available" },
+                        as: :select, label: "Le dossard est-il toujours disponible ?",
+                        collection: [['free', 'Oui'], ['unfree', 'Non']],
+                        label_method: :second, required: true,
+                        value_method: :first %>
+        <%= f.submit "Modifier", class: "btn btn-primary" %>
       <% end %>
     </div>
     <div class="col-sm-4">

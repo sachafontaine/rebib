@@ -2,9 +2,9 @@
   <div class="row w-100-custom">
     <div class="program-list mb-4 col-md-12">
       <h2 class="text-center mt-4 mb-4">Dossards en vente sur Rebib</h2>
-        <% if @bibs.count > 0 %>
+        <% if @bibs.where(available: "free").count > 0 %>
           <div class="row">
-            <% @bibs.each do |bib| %>
+            <% @bibs.where(available: "free").each do |bib| %>
               <div class="col-sm-3 col-md-3 mb-3">
                 <%= link_to bib, class:"card-offer" do %>
                   <div class="card-offer">

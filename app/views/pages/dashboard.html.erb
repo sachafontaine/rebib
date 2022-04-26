@@ -47,8 +47,8 @@
                         <p>Départ le : <%= bib.race.date.to_date.strftime('%d/%m/%Y') %></p>
                         <p>📍 <%= bib.race.address.gsub(/([()])/,' \1 ') %></p>
                         <div class="etiquette-status px-2 py-2 mb-2">
-                          <% if bib.available == '2' %>
-                            <p>Vendu</p>
+                          <% if bib.available == "unfree" %>
+                            <p>Plus disponible</p>
                           <% else %>
                             <p>En vente</p>
                           <% end %>

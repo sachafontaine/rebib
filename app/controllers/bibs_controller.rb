@@ -31,7 +31,7 @@ class BibsController < ApplicationController
 
   def show
     unless current_user == @bib.user
-      if @bib.available == '2'
+      if @bib.available == "unfree"
         redirect_to bibs_path, notice: 'Désolé, le dossard a déjà été vendu.'
       end
     end
@@ -60,6 +60,6 @@ class BibsController < ApplicationController
   end
 
   def bib_params
-    params.require(:bib).permit(:race, :price)
+    params.require(:bib).permit(:race_id, :price, :available)
   end
 end

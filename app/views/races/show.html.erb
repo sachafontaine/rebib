@@ -8,8 +8,8 @@
       <hr>
       <div class="row">
         <h4 class="mb-3">Dossards en vente</h4>
-        <% if @race.bibs.where(available: "1").count > 0 %>
-          <% @race.bibs.where(available: "1").each do |bib| %>
+        <% if @race.bibs.where(available: "free").count > 0 %>
+          <% @race.bibs.where(available: "free").each do |bib| %>
             <div class="col-sm-4 col-md-4 mb-3">
               <%= link_to bib, class:"card-offer" do %>
                 <div class="card-offer">
