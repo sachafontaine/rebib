@@ -6,13 +6,13 @@
       <%= simple_form_for @bib do |f| %>
         <%= f.input :race_id, as: :hidden, input_html: { value: params[:race_id] } %>
         <%= f.collection_select :race_id, Race.all, :id, :name %>
-        <%= f.input :price_cents, as: :float, label: "Nouveau prix du dossard ?", required: true, input_html: { autocomplete: "off" } %>
+        <%= f.input :price_cents, as: :float, label: "Nouveau prix du dossard ?", input_html: { autocomplete: "price" } %>
         <%= f.input :available,
                         required: true,
                         input_html: { autocomplete: "available" },
                         as: :select, label: "Le dossard est-il toujours disponible ?",
                         collection: [['free', 'Oui'], ['unfree', 'Non']],
-                        label_method: :second, required: true,
+                        label_method: :second,
                         value_method: :first %>
         <%= f.submit "Modifier", class: "btn btn-primary" %>
       <% end %>
