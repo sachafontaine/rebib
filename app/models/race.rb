@@ -2,7 +2,6 @@ class Race < ApplicationRecord
   include PgSearch::Model
   belongs_to :user
   has_many :bibs
-  has_one_attached :photo
 
   validates :name, presence: true
   validates :address, presence: true
