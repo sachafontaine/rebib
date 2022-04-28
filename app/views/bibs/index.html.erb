@@ -21,7 +21,7 @@
           </div>
         <% else %>
         <p>Il n'y a plus de dossard en vente actuellement</p>
-          <%= link_to "Vendez votre dossard", new_bib_path, class:"btn btn-primary" %>
+          <%= link_to "Vendez votre dossard", new_race_bib_path(Race.all), class:"btn btn-primary" %>
         <% end %>
     </div>
   </div>

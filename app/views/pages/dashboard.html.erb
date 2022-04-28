@@ -62,7 +62,7 @@
         <% else %>
           <div class="text-center mt-5">
             <p>Vous n'avez pas encore de dossard en vente sur Rebib ? Profitez-en !</p>
-            <%= link_to "Vendre un dossard", new_bib_path, class:"btn btn-primary" %>
+            <%= link_to "Vendre un dossard", new_race_bib_path(Race.all), class:"btn btn-primary" %>
           </div>
         <% end %>
 

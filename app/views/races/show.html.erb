@@ -11,12 +11,12 @@
         <% if @race.bibs.where(available: "free").count > 0 %>
           <% @race.bibs.where(available: "free").each do |bib| %>
             <div class="col-sm-4 col-md-4 mb-3">
-              <%= link_to bib, class:"card-offer" do %>
+              <%= link_to race_bibs_path(@race), class:"card-offer" do %>
                 <div class="card-offer">
                   <div class="card-offer-infos">
                     <h4>Dossard de <%= bib.user.first_name %></h4>
                     <p><%= bib.created_at.strftime("Déposé le %m %B %Y") %></p>
-                    <%= link_to "Voir", bib_path(bib), class: "btn btn-primary" %>
+                    <%= link_to "Voir", race_bib_path(bib), class: "btn btn-primary" %>
                   </div>
                 </div>
               <% end %>
@@ -25,7 +25,7 @@
         <% else %>
           <p>Il n'y a pas de dossards à vendre sur Rebib pour cette course.</p>
           <div class="col-sm-4">
-            <%= link_to "Vendre un dossard", new_bib_path, class: "btn btn-primary" %>
+            <%= link_to "Vendre un dossard", new_race_bib_path(@race), class: "btn btn-primary" %>
           </div>
         <% end %>
       </div>

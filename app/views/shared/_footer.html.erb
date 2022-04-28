@@ -7,7 +7,7 @@
           <li class="mb-2"><%= link_to("Liste des courses", races_path) %></li>
           <li class="mb-2"><%= link_to("Ajouter une course", new_race_path) %></li>
           <li class="mb-2"><%= link_to("Mes dossards", dashboard_path) %></li>
-          <li class="mb-2"><%= link_to("Vendre mon dossard", new_bib_path) %></li>
+          <li class="mb-2"><%= link_to("Vendre mon dossard", new_race_bib_path(Race.all)) %></li>
         </ul>
       </div>
       <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
